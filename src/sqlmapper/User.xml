@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     <mapper namespace="com.cen.mapper.UserMapper">
+         <select id="getUserbyname" parameterType="User" resultType="User">
+             select * from emuser where  username=#{username} and  binary password=#{password}
+         </select>
+         <select id="getMoudle" parameterType="String" resultType="Moudle">
+             select * from r_moudle where m_flag=1 and  m_level=1 and m_parentid=0
+         </select>
+           <select id="getSubMoudle" parameterType="integer" resultType="Moudle">
+             select * from r_moudle where m_flag=1 and m_parentid=#{moudleid}
+         </select>
+        
+         <update id="resetPassword" parameterType="User">
+             update  emuser set password=#{password} where username=#{username}
+         </update>
+     </mapper>
